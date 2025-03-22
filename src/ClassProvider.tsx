@@ -43,7 +43,8 @@ const ClassProvider = () => {
         nameFilter: string,
         codeFilter: string,
         creditFilter: string,
-        attributeFilter: string
+        attributeFilter: string,
+        notIncludeFilter: string
     ): Array<Class> => {
         try {
             return classes.filter((classItem) => {
@@ -52,7 +53,8 @@ const ClassProvider = () => {
                     classItem.Code.includes(codeFilter) &&
                     classItem.Credits.includes(creditFilter) &&
                     (attributeFilter === "" ||
-                        classItem.Attributes.includes(attributeFilter))
+                        classItem.Attributes.includes(attributeFilter)) &&
+                    !classItem.Attributes.includes(notIncludeFilter)
                 );
             });
         } catch (e) {
@@ -65,13 +67,15 @@ const ClassProvider = () => {
         nameFilter: string,
         codeFilter: string,
         creditFilter: string,
-        attributeFilter: string
+        attributeFilter: string,
+        notIncludeFilter: string,
     ) => {
         const filtered = filterClasses(
             nameFilter,
             codeFilter,
             creditFilter,
-            attributeFilter
+            attributeFilter,
+            notIncludeFilter
         );
         setFilteredClasses(filtered);
     };

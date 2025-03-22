@@ -5,7 +5,8 @@ interface Props {
         nameFilter: string,
         codeFilter: string,
         creditFilter: string,
-        attributeFilter: string
+        attributeFilter: string,
+        notIncludeFilter: string,
     ) => void;
 }
 
@@ -14,9 +15,10 @@ const Filters = ({ onApplyFilter }: Props) => {
     const [codeFilter, setCodeFilter] = useState<string>("");
     const [creditFilter, setCreditFilter] = useState<string>("");
     const [attributeFilter, setAttributeFilter] = useState<string>("");
+    const [notIncludeFilter, setNotIncludeFilter] = useState<string>("");
 
     const handleApplyFilter = () => {
-        onApplyFilter(nameFilter, codeFilter, creditFilter, attributeFilter);
+        onApplyFilter(nameFilter, codeFilter, creditFilter, attributeFilter, notIncludeFilter);
     };
 
     return (
@@ -61,6 +63,82 @@ const Filters = ({ onApplyFilter }: Props) => {
                     id="attribute-filter"
                     value={attributeFilter}
                     onChange={(e) => setAttributeFilter(e.target.value)}
+                >
+                    <option value="">
+                        Select one (if needed)
+                    </option>
+                    <option value="Arts (GA)">
+                        Arts (GA)
+                    </option>
+                    <option value="Health and Wellness (GHW)">
+                        Health and Wellness (GHW)
+                    </option>
+                    <option value="Humanities (GH)">
+                        Humanities (GH)
+                    </option>
+                    <option value="Integrative: Interdomain">
+                        Interdomain
+                    </option>
+                    <option value="Natural Sciences (GN)">
+                        Natural Sciences (GN)
+                    </option>
+                    <option value="Quantification (GQ)">
+                        Quantification (GQ)
+                    </option>
+                    <option value="Social and Behavioral Scien (GS)">
+                        Social and Behavioral Scien (GS)
+                    </option>
+                    <option value="Writing/Speaking (GWS)">
+                        Writing/Speaking (GWS)
+                    </option>
+                    <option value="First-Year Seminar">
+                        First-Year Seminar
+                    </option>
+                    <option value="International Cultures (IL)">
+                        International Cultures (IL)
+                    </option>
+                    <option value="United States Cultures (US)">
+                        United States Cultures (US)
+                    </option>
+                    <option value="Writing Across the Curriculum">
+                        Writing Across the Curriculum
+                    </option>
+                    <option value="Bachelor of Arts: Arts">
+                        Bachelor of Arts: Arts
+                    </option>
+                    <option value="Bachelor of Arts: Humanities">
+                        Bachelor of Arts: Humanities
+                    </option>
+                    <option value="Bachelor of Arts: Natural Sciences">
+                        Bachelor of Arts: Natural Sciences
+                    </option>
+                    <option value="Bachelor of Arts: Quantification">
+                        Bachelor of Arts: Quantification
+                    </option>
+                    <option value="Bachelor of Arts: Social and Behavioral Sciences">
+                        Bachelor of Arts: Social and Behavioral Sciences
+                    </option>
+                    <option value="Bachelor of Arts: World Cultures">
+                        Bachelor of Arts: World Cultures
+                    </option>
+                    <option value="Bachelor of Arts: World Lang (12th Unit)">
+                        Bachelor of Arts: World Lang (12th Unit)
+                    </option>
+                    <option value="Bachelor of Arts: World Language (All)">
+                        Bachelor of Arts: World Language (All)
+                    </option>
+                    <option value="Exceeds 12th Unit of World Language">
+                        Exceeds 12th Unit of World Language
+                    </option>
+                </select>
+            </label>
+            <label htmlFor="not-include-filter">
+                Don't include:
+                <select
+                    name="not-include-filter"
+                    id="not-include-filter"
+                    value={notIncludeFilter}
+                    onChange={(e) => setNotIncludeFilter(e.target.value)}
                 >
                     <option value="">
                         Select one (if needed)
